@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SBA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
+        <h2 class="text-center">welcome to main page</h2>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid" style="background-color: aqua;">
+            <div>
+                <a class="navbar-brand" href="resume/Portfolio.html">my resume</a>
+
+                <a class="navbar-brand" href="about.html">about</a>
+
+            </div>
+        </div>
+    </nav>
+    <br><br><br>
+    <form action="enter.html" class="row g-3 needs-validation" validate id="register" style="margin-left: 10px;">
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">First name</label>
+            <input type="text" class="form-control" id="validationCustom01" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="validationCustom02" required>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label">Email</label>
+            <input type="text" name="Email" class="form-control" id="em" />
+            <label id="err" style="color: red;"></label>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">State</label>
+            <select class="form-select" id="validationCustom04">
+                <option>MI</option>
+                <option>NY</option>
+                <option>DC</option>
+                <option>CL</option>
+            </select>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </form><br>
+    <br>
+    <h2 style="margin-left: 10px;">add two number</h2>
+    <form class="row g-3 needs-validation" validate style="margin-left: 10px;">
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">enter number 1</label>
+            <input type="number" class="form-control" id="n1" required>
+        </div>
+
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">enter number 2</label>
+            <input type="text" class="form-control" id="n2" required>
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary" id="add">add</button>
+        </div>
+    </form>
+    <br>
+    <br>
+    <h2 style="margin-left: 10px;">table</h2>
+    <table class="table" style="margin-left: 10px;">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mayyas</td>
+                <td>Qasem</td>
+                <td>@mayyasco</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Ali</td>
+                <td>Qasem</td>
+                <td>@ali</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">mohammad</td>
+                <td>@mohammad</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const adduser = (event) => {
+            let regex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
+            if (regex.test(document.getElementById("em").value) === true) {
+                document.getElementById("err").innerHTML = "";
+                localStorage.setItem("fn", document.getElementById("validationCustom01").value);
+                localStorage.setItem("ln", document.getElementById("validationCustom02").value);
+                localStorage.setItem("st", document.getElementById("validationCustom04").value);
+            }
+            else {
+                document.getElementById("err").innerHTML = "please enter correct format of the email";
+                event.preventDefault();
+            }
+        }
+
+        const email = document.getElementById('em');
+        email.addEventListener('focus', (event) => {
+            document.getElementById("err").innerHTML = "";
+        });
+        const register = document.getElementById('register');
+        register.addEventListener("submit", adduser);
+
+        const add = document.getElementById('add');
+        add.addEventListener("click", () => alert(Number(document.getElementById("n1").value) +
+            Number(document.getElementById("n2").value)));
+    </script>
+</body>
+
+</html>
